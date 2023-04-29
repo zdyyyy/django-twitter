@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #third party
     'rest_framework',
+    #project apps
+    'accounts',
 ]
 
 REST_FRAMEWORK = {'DEFAUL_PAGINATION_CLASS':'rest_framework.pagination_class.PageNumberPagination',
