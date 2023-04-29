@@ -40,33 +40,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration name="django-twitter" type="Python.DjangoServer" factoryName="Django server">
-      <module name="django-twitter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="twitter.settings" />
-      </envs>
-      <option name="SDK_HOME" value="/home/vagrant/.virtualenvs/django-twitter/bin/python" />
-      <option name="SDK_NAME" value="Remote Python 3.6.9 (sftp://vagrant@127.0.0.1:2222/home/vagrant/.virtualenvs/django-twitter/bin/python)" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="0.0.0.0" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -77,7 +50,7 @@
       <updated>1682609486186</updated>
       <workItem from="1682689648509" duration="1205000" />
       <workItem from="1682691483260" duration="623000" />
-      <workItem from="1682692179822" duration="4295000" />
+      <workItem from="1682692179822" duration="4547000" />
     </task>
     <servers />
   </component>
