@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
-REST_FRAMEWORK = {'DEFAUL_PAGINATION_CLASS':'rest_framework.pagination_class.PageNumberPagination',
-                  'PAGE_SIZE': 10
+REST_FRAMEWORK = {'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
+                  'PAGE_SIZE': 200
 }
 
 MIDDLEWARE = [
