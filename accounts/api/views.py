@@ -51,7 +51,7 @@ class AccountViewSet(viewsets.ViewSet):
         password = serializer.validated_data['password']
 
         # queryset = User.objects.filter(username = username)
-        # print(queryset.query()git )
+        # print(queryset.query())
 
         if not User.objects.filter(username = username).exists():
             return Response({
