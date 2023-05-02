@@ -19,7 +19,8 @@ from rest_framework import routers
 from accounts.api import views
 
 router = routers.DefaultRouter()
-router.register(r'api/accounts',views.AccountViewSet,basename='accounts')
+router.register(r'api/users',views.UserViewSet)
+router.register(r'api/accounts',views.AccountViewSet,basename='accounts') #root dir
 
 
 urlpatterns = [

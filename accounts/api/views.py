@@ -46,14 +46,26 @@ class AccountViewSet(viewsets.ViewSet):
                 "message": "Please check input",
                 "errors": serializer.errors,
             },status = 400)
+
         username = serializer.validated_data['username']
         password = serializer.validated_data['password']
+
+        # queryset = User.objects.filter(username = username)
+        # print(queryset.query())
+
+        if not User.objects.filter(username = username).exists():
+            return Response({
+                "success": False,
+                "message": "username does not exist",
+            }, status=400)
+
         user = django_authenticate(username=username,password=password)
         if not user or user.is_anonymous:
             return Response({
                 "success":False,
                 "message":"username and password does not match",
             },status = 400)
+
         django_login(request,user)
         return Response({
             "success": True,
