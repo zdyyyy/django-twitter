@@ -4,7 +4,7 @@ from rest_framework import serializers,exceptions
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ("username","email")
+        fields = ("id","username","email")
 
 
 class SignupSerializer(serializers.ModelSerializer):
@@ -42,3 +42,5 @@ class SignupSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
+
+
