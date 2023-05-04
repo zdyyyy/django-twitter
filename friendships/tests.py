@@ -52,7 +52,7 @@ class FriendshipAPITests(TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data['duplicate'],True)
 
-        # repeatedly follow, keep silence
+        # Generate new data as the followed one follow the following one
         count = Friendship.objects.count()
         response = self.linghu_client.post(FOLLOW_URL.format(self.dongxie.id))
         self.assertEqual(response.status_code, 201)
@@ -97,7 +97,7 @@ class FriendshipAPITests(TestCase):
         response = self.anonymous_client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data['followings']), 3)
-        # 确保按照时间倒序
+        # make sure in reverse chronological order
         ts0 = response.data['followings'][0]['created_at']
         ts1 = response.data['followings'][1]['created_at']
         ts2 = response.data['followings'][2]['created_at']
@@ -126,7 +126,7 @@ class FriendshipAPITests(TestCase):
         print(response.data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data['followers']), 2)
-        # 确保按照时间倒序
+        # make sure in reverse chronological order
         ts0 = response.data['followers'][0]['created_at']
         ts1 = response.data['followers'][1]['created_at']
         self.assertEqual(ts0 > ts1, True)
