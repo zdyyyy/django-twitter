@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="14003185-fce0-4b8d-bf96-341c53a17c2c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +40,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Django tests.Test: accounts.api.tests.AccountApiTests.test_logout">
+  <component name="RunManager" selected="Django Server.django-twitter">
     <configuration name="Test: accounts.api.tests.AccountApiTests.test_login" type="DjangoTestsConfigurationType" temporary="true">
       <module name="django-twitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
