@@ -17,7 +17,7 @@ class FriendshipSerializerForCreate(serializers.ModelSerializer):
                 'message': 'from_user_id and to_user_id should be different '
             })
         return attr
-    
+
 
     def create(self, validated_data):
         from_user_id = validated_data['from_user_id']
