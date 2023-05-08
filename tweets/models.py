@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 class Tweet(models.Model):
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null = True)
     content = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True) #update value when created
+    # updated_at = models.DateTimeField(auto_now=True) #update when revising every time
 
     class Meta:
         index_together = (('user','created_at'),)

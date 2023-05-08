@@ -15,7 +15,9 @@ class FriendshipViewSet(viewsets.GenericViewSet):
 
     @action(methods = ['GET'],detail=True,permission_classes = [AllowAny])
     def followers(self,request,pk):
+        #GET /api/friendships/{}/followers
         friendships = Friendship.objects.filter(to_user_id = pk).order_by('-created_at')
+        #serilizer is responsible for parsing
         serializer = FollowerSerializer(friendships,many = True)
         return Response(
             {'followers': serializer.data},
@@ -39,6 +41,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
                 'duplicate': True
             },status = status.HTTP_201_CREATED)
 
+        #current user follows the follower whose id is pk
         serializer = FriendshipSerializerForCreate(data = {
             'from_user_id':request.user.id,
             'to_user_id': pk,

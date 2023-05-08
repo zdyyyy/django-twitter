@@ -2,7 +2,7 @@ from accounts.api.serializers import UserSerializer
 from rest_framework import serializers
 from tweets.models import Tweet
 class TweetSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    user = UserSerializer() #if we do not have such serializer, the user in the fields would be returned as int type
 
     class Meta:
         model = Tweet
@@ -14,7 +14,7 @@ class TweetCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tweet
-        fields = ('content',)
+        fields = ('content',)   #avoid using others' id to tweet
 
     def create(self, validated_data):
         user = self.context['request'].user

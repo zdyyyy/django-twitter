@@ -18,9 +18,9 @@ class TweetViewSet(viewsets.GenericViewSet,
         return [IsAuthenticated()]
 
     def create(self,request,*args,**kwargs):
-        serializer = TweetCreateSerializer(
+        serializer = TweetCreateSerializer(   #for creating tweet
             data = request.data,
-            context = {'request':request}
+            context = {'request':request}  #extra info
         )
         if not serializer.is_valid():
             return Response({
@@ -39,5 +39,5 @@ class TweetViewSet(viewsets.GenericViewSet,
         tweets = Tweet.objects.filter(
             user_id = request.query_params['user_id']
         ).order_by('-created_at')
-        serializer = TweetSerializer(tweets,many = True)
+        serializer = TweetSerializer(tweets,many = True)  #list of dict #for showing
         return Response({'tweets': serializer.data})
