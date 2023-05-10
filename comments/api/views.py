@@ -37,7 +37,7 @@ class CommentViewSet(viewsets.GenericViewSet):
             },status = status.HTTP_400_BAD_REQUEST)
         comment = serializer.save()
         return Response(
-            CommentSerializer(comment).data,
+            CommentSerializer(comment,context ={'request':request}).data,
             status = status.HTTP_201_CREATED,
         )
     def update(self,request,*args,**kwargs):
@@ -53,8 +53,8 @@ class CommentViewSet(viewsets.GenericViewSet):
 
         comment = serializer.save()
         return Response(
-            CommentSerializer(comment).data,
-            status = status.HTTP_200_OK)
+            CommentSerializer(comment,context ={'request':request}).data,
+            status = status.HTTP_200_OK,)
 
     def delete(self, request, *args, **kwargs):
         comment = self.get_object()
@@ -68,7 +68,10 @@ class CommentViewSet(viewsets.GenericViewSet):
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         comments = self.filter_queryset(queryset).order_by('created_at')
-        serializer = CommentSerializer(comments,many = True)
+        serializer = CommentSerializer(
+            comments,
+            context = {'request':request},
+            many = True)
         return Response(
             {'comments':serializer.data},
             status = status.HTTP_200_OK,)
