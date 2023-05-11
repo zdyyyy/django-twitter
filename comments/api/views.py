@@ -19,6 +19,7 @@ class CommentViewSet(viewsets.GenericViewSet):
         if self.action == "create":
             return [IsAuthenticated()]
         if self.action in ['destroy','update']:
+            #verify login first, then verify the ownership
             return [IsAuthenticated(),IsObjectOwner()]
         return [AllowAny()]
 
