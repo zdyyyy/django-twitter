@@ -1,7 +1,7 @@
 from django.contrib import admin
 from accounts.models import UserProfile
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.admin import User
+from django.contrib.auth.models import User
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
@@ -19,6 +19,6 @@ class UserAdmin(BaseUserAdmin):
     inlines = (UserProfileInline,)
 
 #Re-register UserAdmin
-admin.site.unregiter(User)
+admin.site.unregister(User)
 admin.site.register(User,UserAdmin)
 

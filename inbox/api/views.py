@@ -45,8 +45,6 @@ class NotificationViewSet(viewsets.GenericViewSet,
 
         notification = serializer.save()
 
-        #create userprofile object
-        user.profile
 
         return Response(
             NotificationSerializer(notification.data),
