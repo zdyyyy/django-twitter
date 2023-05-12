@@ -8,3 +8,16 @@ class TweetAdmin(admin.ModelAdmin):
     list_display = ('created_at',
                     'user',
                     'content',)
+
+@admin.register(Tweet)
+class TweetPhotoAdmin(admin.ModelAdmin):
+    list_display = (
+        'tweet',
+        'user',
+        'file',
+        'status',
+        'has_deleted',
+        'created_at',
+    )
+    list_filter = ('status','has_deleted')
+    date_hierarchy = 'created_at'
