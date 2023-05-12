@@ -1,4 +1,4 @@
-from accounts.api.serializers import UserSerializer
+from accounts.api.serializers import UserSerializerForTweet
 from comments.api.serializers import CommentSerializer
 from likes.api.serializers import LikeSerializer
 from likes.services import LikeService
@@ -6,7 +6,7 @@ from rest_framework import serializers
 from tweets.models import Tweet
 class TweetSerializer(serializers.ModelSerializer):
     #user who launch the tweet
-    user = UserSerializer() #if we do not have such serializer, the user in the fields would be returned as int type
+    user = UserSerializerForTweet() #if we do not have such serializer, the user in the fields would be returned as int type
     comments_count = serializers.SerializerMethodField()
     likes_count = serializers.SerializerMethodField()
     has_liked = serializers.SerializerMethodField()
