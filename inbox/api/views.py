@@ -44,6 +44,10 @@ class NotificationView(viewsets.GenericViewSet,
             },status = status.HTTP_400_BAD_REQUEST)
 
         notification = serializer.save()
+
+        #create userprofile object
+        user.profile
+
         return Response(
             NotificationSerializer(notification.data),
             status = status.HTTP_200_OK,)
