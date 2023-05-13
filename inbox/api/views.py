@@ -27,7 +27,7 @@ class NotificationViewSet(viewsets.GenericViewSet,
     def mark_as_all_read(self, request, *args, **kwargs):
         count = self.get_queryset().update(unread=False)
         return Response({
-            'update_count': count
+            'marked_count': count
         }, status=status.HTTP_200_OK)
 
     @required_params(method = 'POST',params = 'unread')
