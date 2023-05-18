@@ -10,15 +10,15 @@ class UserProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "{}.{}".format(self.user,self.nickname)
+        return "{} {}".format(self.user,self.nickname)
 
-    def get_profile(user):
-        if hasattr(user,'_cache_user_profile'):
-            return getattr(user,'_cache_user_profile')
+def get_profile(user):
+    if hasattr(user,'_cached_user_profile'):
+        return getattr(user,'_cached_user_profile')
 
-        profile, _ = UserProfile.objects.get_or_create(user=user)
-        setattr(user,'_cache_user_profile')
-        return profile
+    profile, _ = UserProfile.objects.get_or_create(user=user)
+    setattr(user,'_cached_user_profile',profile)
+    return profile
 
-    User.profile = property(get_profile)
+User.profile = property(get_profile)
 

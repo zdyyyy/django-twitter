@@ -36,6 +36,7 @@ class TweetPhoto(models.Model):
     file = models.FileField()
     order = models.IntegerField(default=0)
 
+    #Using IntegerField is easy for users to revise than using StringField
     status = models.IntegerField(
         default = TweetPhotoStatus.PENDING,
         choices=TWEET_PHOTO_STATUS_CHOICES,

@@ -21,10 +21,10 @@ class Friendship(models.Model):
 
     class Meta:
         index_together = (
-            ('from_user','created_at'),
-            ('to_user','created_at')
+            ('from_user_id','created_at'),
+            ('to_user_id','created_at')
         )
         unique_together = (('from_user_id','to_user_id'),)
 
     def __str__(self):
-        return "{}.format.{}".format(self.from_user_id,self.to_user_id)
+        return "{} followed {}".format(self.from_user_id,self.to_user_id)

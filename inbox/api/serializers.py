@@ -6,6 +6,11 @@ class NotificationSerializer(serializers.ModelSerializer):
     user = UserSerializer
 
     class Meta:
+        #User1 follows you(recipient)
+        #actor = user1
+        #verb = 'followed'
+
+
         model = Notification
         fields = (
             'id',

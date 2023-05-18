@@ -55,7 +55,7 @@ class SignupSerializer(serializers.ModelSerializer):
             })
         if User.objects.filter(email=data['email'].lower()).exists():
             raise exceptions.ValidationError({
-                'message': 'The email adress has already been occupied.'
+                'message': 'The email address has already been occupied.'
             })
         return data
 
