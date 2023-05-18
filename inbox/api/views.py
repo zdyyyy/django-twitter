@@ -7,7 +7,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from utils.decorators import required_params
-class NotificationView(viewsets.GenericViewSet,
+class NotificationViewSet(viewsets.GenericViewSet,
                        viewsets.mixins.ListModelMixin,):
     serializer_class = NotificationSerializer
     permission_class = (IsAuthenticated,)
