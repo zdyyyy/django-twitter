@@ -1,4 +1,3 @@
-from django.db import models
 from utils.time_helpers import utc_now
 from django.db import models
 from django.contrib.auth.models import User
