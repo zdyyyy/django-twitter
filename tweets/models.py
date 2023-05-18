@@ -38,7 +38,7 @@ class TweetPhoto(models.Model):
 
     status = models.IntegerField(
         default = TweetPhotoStatus.PENDING,
-        choices=TWEET_PHOTO_STATUS_CHOICES,
+        choices = TWEET_PHOTO_STATUS_CHOICES,
     )
 
     has_deleted = models.BooleanField(default = False)
