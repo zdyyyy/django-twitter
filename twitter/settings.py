@@ -151,8 +151,8 @@ if TESTING:
 
 # 当用s3boto3 作为用户上传文件存储时，需要按照你在 AWS 上创建的配置来设置你的 BUCKET_NAME
 # 和 REGION_NAME，这个值你可以改成你自己创建的 bucket 的名字和所在的 region
-AWS_STORAGE_BUCKET_NAME = 'django-twitter'
-AWS_S3_REGION_NAME = 'canada-east-1'
+AWS_STORAGE_BUCKET_NAME = 'django-twitter-ronald-yin'
+AWS_S3_REGION_NAME = 'ca-central-1'
 
 # 你还需要在 local_settings.py 中设置你的 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY
 # 因为这是比较机密的信息，是不适合放在 settings.py 这种共享的配置文件中共享给所有开发者的
