@@ -36,7 +36,7 @@ router.register(r'api/friendships',FriendshipViewSet,basename='friendships')
 router.register(r'api/newsfeeds',NewsFeedViewSet,basename='newsfeeds')
 router.register(r'api/comments',CommentViewSet,basename='comments')
 router.register(r'api/likes',LikeViewSet,basename='comments')
-router.register(r'api/inbox',NotificationViewSet,basename='notifications')
+router.register(r'api/notifications',NotificationViewSet,basename='notifications')
 router.register(r'api/profiles',UserProfileViewSet,basename='profiles')
 
 urlpatterns = [

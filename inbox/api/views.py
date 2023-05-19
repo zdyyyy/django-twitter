@@ -10,7 +10,7 @@ from utils.decorators import required_params
 class NotificationViewSet(viewsets.GenericViewSet,
                        viewsets.mixins.ListModelMixin,):
     serializer_class = NotificationSerializer
-    permission_class = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     fields = ('unread',)
 
     def get_queryset(self):

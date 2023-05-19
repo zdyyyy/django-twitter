@@ -11,9 +11,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserSerializerWithProfile(UserSerializer):
     nickname = serializers.CharField(source = 'profile.nickname')
-    avatar = serializers.SerializerMethodField()
+    avatar_url = serializers.SerializerMethodField()
 
-    def get_avatar(self,obj):
+    def get_avatar_url(self,obj):
         if obj.profile.avatar:
             return obj.profile.avatar.url
         return None

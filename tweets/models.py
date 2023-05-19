@@ -39,7 +39,7 @@ class TweetPhoto(models.Model):
     #Using IntegerField is easy for users to revise than using StringField
     status = models.IntegerField(
         default = TweetPhotoStatus.PENDING,
-        choices=TWEET_PHOTO_STATUS_CHOICES,
+        choices = TWEET_PHOTO_STATUS_CHOICES,
     )
 
     has_deleted = models.BooleanField(default = False)

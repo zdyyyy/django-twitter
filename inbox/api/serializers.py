@@ -3,7 +3,7 @@ from notifications.models import Notification
 from accounts.api.serializers import UserSerializer
 
 class NotificationSerializer(serializers.ModelSerializer):
-    user = UserSerializer
+    # user = UserSerializer
 
     class Meta:
         #User1 follows you(recipient)

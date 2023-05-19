@@ -32,24 +32,31 @@ class NotificationApiTests(TestCase):
     def setUp(self):
         self.linghu,self.linghu_client = self.create_user_and_client('linghu')
         self.dongxie,self.dongxie_client = self.create_user_and_client('dongxie')
-        self.linghu_tweet = self.create_tweet(self.dongxie)
+        self.linghu_tweet = self.create_tweet(self.linghu)
 
     def test_unread_count(self):
-        self.dongxie_client.post(LIKE_URL,{
+        self.dongxie_client.post(LIKE_URL, {
             'content_type': 'tweet',
-            'object_id': self.linghu_tweet.tweet.id,
+            'object_id': self.linghu_tweet.id,
         })
 
         url = '/api/notifications/unread-count/'
         response = self.linghu_client.get(url)
-        self.assertEqual(response.status_code,200)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['unread_count'], 1)
 
+        comment = self.create_comment(self.linghu, self.linghu_tweet)
+        self.dongxie_client.post(LIKE_URL, {
+            'content_type': 'comment',
+            'object_id': comment.id,
+        })
+        response = self.linghu_client.get(url)
+        self.assertEqual(response.data['unread_count'], 2)
 
     def test_mark_all_as_read(self):
         self.dongxie_client.post(LIKE_URL,{
             'content_type': 'tweet',
-            'object_id': self.linghu_tweet.tweet.id,
+            'object_id': self.linghu_tweet.id,
         })
         comment = self.create_tweet(self.linghu,self.linghu_tweet)
         self.dongxie_client.post(LIKE_URL,{
@@ -57,13 +64,13 @@ class NotificationApiTests(TestCase):
             'object_id': comment.id,
         })
 
-        unread_url = '/api/notification/unread_url/'
+        unread_url = '/api/notifications/unread_url/'
         response = self.linghu_client.get(unread_url)
         self.assertEqual(response.data['unread_count'],2)
 
-        mark_url = '/api/notification/mark_all_as_url/'
+        mark_url = '/api/notifications/mark_all_as_url/'
         response = self.linghu_client.get(mark_url)
-        self.assertEqual(response.status_code,405)
+        self.assertEqual(response.status_code, 405)
         response = self.linghu_client.post(mark_url)
         self.assertEqual(response.status_code, 405)
         self.assertEqual(response.data['marked_count'], 2)
@@ -73,7 +80,7 @@ class NotificationApiTests(TestCase):
     def test_list(self):
         self.dongxie_client.post(LIKE_URL, {
             'content_type': 'tweet',
-            'object_id': self.linghu_tweet.tweet.id,
+            'object_id': self.linghu_tweet.id,
         })
         comment = self.create_tweet(self.linghu, self.linghu_tweet)
         self.dongxie_client.post(LIKE_URL, {
@@ -101,7 +108,7 @@ class NotificationApiTests(TestCase):
         self.assertEqual(response.data['count'], 2)
 
         # See one unread notification after marking
-        notification = self.linghu.notification.first()
+        notification = self.linghu.notifications.first()
         notification.unread = False
         notification.save()
         response = self.linghu_client.get(NOTIFICATION_URL)
