@@ -1,142 +1,26 @@
-from testing.testcases import TestCase
 from friendships.models import Friendship
-from rest_framework.test import APIClient
+from friendships.services import FriendshipService
+from testing.testcases import TestCase
 
-# Create your tests here.
-FOLLOW_URL = '/api/friendships/{}/follow/'
-UNFOLLOW_URL = '/api/friendships/{}/unfollow/'
-FOLLOWER_URL = '/api/friendships/{}/followers/'
-FOLLOWING_URL = '/api/friendships/{}/followings/'
 
-class FriendshipAPITests(TestCase):
+class FriendshipServiceTests(TestCase):
+
     def setUp(self):
+        self.clear_cache()
         self.linghu = self.create_user('linghu')
-        self.linghu_client = APIClient()
-        self.linghu_client.force_authenticate(self.linghu)
-
         self.dongxie = self.create_user('dongxie')
-        self.dongxie_client = APIClient()
-        self.dongxie_client.force_authenticate(self.dongxie)
 
-        # create followings and followers for dongxie
-        for i in range(2):
-            follower = self.create_user('dongxie_follower{}'.format(i))
-            Friendship.objects.create(from_user=follower, to_user=self.dongxie)
-        for i in range(3):
-            following = self.create_user('dongxie_following{}'.format(i))
-            Friendship.objects.create(from_user=self.dongxie, to_user=following)
+    def test_get_followings(self):
+        user1 = self.create_user('user1')
+        user2 = self.create_user('user2')
+        for to_user in [user1, user2, self.dongxie]:
+            Friendship.objects.create(from_user=self.linghu, to_user=to_user)
+        FriendshipService.invalidate_following_cache(self.linghu.id)
 
+        user_id_set = FriendshipService.get_following_user_id_set(self.linghu.id)
+        self.assertSetEqual(user_id_set, {user1.id, user2.id, self.dongxie.id})
 
-    def test_follow(self):
-        url = FOLLOW_URL.format(self.linghu.id)
-
-        #login to follow
-        response = self.anonymous_client.post(url)
-        print(response.data)
-        self.assertEqual(response.status_code, 403)
-
-        #method = get
-        response = self.dongxie_client.get(url)
-        self.assertEqual(response.status_code, 405)
-
-        #cannot follow self
-        response = self.linghu_client.post(url)
-        self.assertEqual(response.status_code, 400)
-
-        #successfully follow
-        response = self.dongxie_client.post(url)
-        self.assertEqual(response.status_code, 201)
-
-        #repeatly follow, keep silence
-        response = self.dongxie_client.post(url)
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.data['duplicate'],True)
-
-        # Generate new data as the followed one follow the following one
-        count = Friendship.objects.count()
-        response = self.linghu_client.post(FOLLOW_URL.format(self.dongxie.id))
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(Friendship.objects.count(),count + 1)
-
-    def test_unfollow(self):
-        url = UNFOLLOW_URL.format(self.linghu.id)
-
-        #login to unfollow
-        response = self.anonymous_client.post(url)
-        self.assertEqual(response.status_code, 403)
-
-        #method = get
-        response = self.dongxie_client.get(url)
-        self.assertEqual(response.status_code, 405)
-
-        #cannot unfollow self
-        response = self.linghu_client.post(url)
-        self.assertEqual(response.status_code, 400)
-
-        #successfully unfollow
-        Friendship.objects.create(from_user=self.dongxie,to_user=self.linghu)
-        count = Friendship.objects.count()
-        response = self.dongxie_client.post(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['deleted'], 1)
-        self.assertEqual(Friendship.objects.count(), count - 1)
-
-        # Under the condition of unfollow, keep silence for follow
-        count = Friendship.objects.count()
-        response = self.dongxie_client.post(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['deleted'], 0)
-        self.assertEqual(Friendship.objects.count(),count)
-
-    def test_followings(self):
-        url = FOLLOWING_URL.format(self.dongxie.id)
-        # post is not allowed
-        response = self.anonymous_client.post(url)
-        self.assertEqual(response.status_code, 405)
-        # get is ok
-        response = self.anonymous_client.get(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.data['followings']), 3)
-        # make sure in reverse chronological order
-        ts0 = response.data['followings'][0]['created_at']
-        ts1 = response.data['followings'][1]['created_at']
-        ts2 = response.data['followings'][2]['created_at']
-        self.assertEqual(ts0 > ts1, True)
-        self.assertEqual(ts1 > ts2, True)
-        self.assertEqual(
-            response.data['followings'][0]['user']['username'],
-            'dongxie_following2',
-        )
-        self.assertEqual(
-            response.data['followings'][1]['user']['username'],
-            'dongxie_following1',
-        )
-        self.assertEqual(
-            response.data['followings'][2]['user']['username'],
-            'dongxie_following0',
-        )
-
-    def test_followers(self):
-        url = FOLLOWER_URL.format(self.dongxie.id)
-        # post is not allowed
-        response = self.anonymous_client.post(url)
-        self.assertEqual(response.status_code, 405)
-        # get is ok
-        response = self.anonymous_client.get(url)
-        print(response.data)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.data['followers']), 2)
-        # make sure in reverse chronological order
-        ts0 = response.data['followers'][0]['created_at']
-        ts1 = response.data['followers'][1]['created_at']
-        self.assertEqual(ts0 > ts1, True)
-        self.assertEqual(
-            response.data['followers'][0]['user']['username'],
-            'dongxie_follower1',
-        )
-        self.assertEqual(
-            response.data['followers'][1]['user']['username'],
-            'dongxie_follower0',
-        )
-
-
+        Friendship.objects.filter(from_user=self.linghu, to_user=self.dongxie).delete()
+        FriendshipService.invalidate_following_cache(self.linghu.id)
+        user_id_set = FriendshipService.get_following_user_id_set(self.linghu.id)
+        self.assertSetEqual(user_id_set, {user1.id, user2.id})
