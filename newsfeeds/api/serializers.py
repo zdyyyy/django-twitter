@@ -1,12 +1,10 @@
-
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 from newsfeeds.models import NewsFeed
 from tweets.api.serializers import TweetSerializer
 
 class NewsFeedSerializer(serializers.ModelSerializer):
-    tweet = TweetSerializer()
+    tweet = TweetSerializer(source='cached_tweet')
 
     class Meta:
         model = NewsFeed
-        fields = ('id','created_at','user','tweet')
+        fields = ('id','created_at','tweet')

@@ -47,7 +47,8 @@ class AccountApiTests(TestCase):
         })
         self.assertEqual(response.status_code, 200)
         self.assertNotEqual(response.data['user'],None)
-        self.assertEqual(response.data['user']['email'],'admin@jiuzhang.com')
+        # self.assertEqual(response.data['user']['email'],'admin@jiuzhang.com')
+        self.assertEqual(response.data['user']['id'], self.user.id)
 
         #verify user has logged in
         response = self.client.get(LOGIN_STATUS_URL)

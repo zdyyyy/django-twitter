@@ -20,12 +20,11 @@ class FriendshipService(object):
             return user_id_set
 
         friendships = Friendship.objects.filter(from_user_id = from_user_id)
-        user_id_set = set([
-            fs.to_user_id
-            for fs in friendships
-        ])
+        user_id_set = set([fs.to_user_id for fs in friendships])
         cache.set(key,user_id_set)
         return user_id_set
+
+
 
     @classmethod
     def invalidate_following_cache(cls,from_user_id):

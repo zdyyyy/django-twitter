@@ -2,11 +2,12 @@ from notifications.models import Notification
 from testing.testcases import TestCase
 
 COMMENT_URL = '/api/comments/'
-LIKE_URL = '/api/likes'
+LIKE_URL = '/api/likes/'
 NOTIFICATION_URL = '/api/notifications/'
 
 class NotificationTests(TestCase):
     def setUp(self):
+        self.clear_cache()
         self.linghu,self.linghu_client = self.create_user_and_client('linghu')
         self.dongxie,self.dongxie_client = self.create_user_and_client('dongxie')
         self.dongxie_tweet = self.create_tweet(self.dongxie)
@@ -58,21 +59,21 @@ class NotificationApiTests(TestCase):
             'content_type': 'tweet',
             'object_id': self.linghu_tweet.id,
         })
-        comment = self.create_tweet(self.linghu,self.linghu_tweet)
+        comment = self.create_comment(self.linghu,self.linghu_tweet)
         self.dongxie_client.post(LIKE_URL,{
             'content_type': 'comment',
             'object_id': comment.id,
         })
 
-        unread_url = '/api/notifications/unread_url/'
+        unread_url = '/api/notifications/unread-count/'
         response = self.linghu_client.get(unread_url)
         self.assertEqual(response.data['unread_count'],2)
 
-        mark_url = '/api/notifications/mark_all_as_url/'
+        mark_url = '/api/notifications/mark-all-as-read/'
         response = self.linghu_client.get(mark_url)
         self.assertEqual(response.status_code, 405)
         response = self.linghu_client.post(mark_url)
-        self.assertEqual(response.status_code, 405)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['marked_count'], 2)
         response = self.linghu_client.get(unread_url)
         self.assertEqual(response.data['unread_count'], 0)
@@ -82,7 +83,7 @@ class NotificationApiTests(TestCase):
             'content_type': 'tweet',
             'object_id': self.linghu_tweet.id,
         })
-        comment = self.create_tweet(self.linghu, self.linghu_tweet)
+        comment = self.create_comment(self.linghu, self.linghu_tweet)
         self.dongxie_client.post(LIKE_URL, {
             'content_type': 'comment',
             'object_id': comment.id,

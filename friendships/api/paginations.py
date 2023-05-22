@@ -8,7 +8,7 @@ class FriendshipPagination(PageNumberPagination):
     max_page_size = 20
 
     def get_paginated_response(self, data):
-        return ({
+        return Response({
             'total_results': self.page.paginator.count,
             'total_pages': self.page.paginator.num_pages,
             'page_number': self.page.number,

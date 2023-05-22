@@ -10,7 +10,7 @@ from tweets.services import TweetService
 
 class TweetSerializer(serializers.ModelSerializer):
     #user who launch the tweet
-    user = UserSerializerForTweet() #if we do not have such serializer, the user in the fields would be returned as int type
+    user = UserSerializerForTweet(source='cached_user') #if we do not have such serializer, the user in the fields would be returned as int type
     comments_count = serializers.SerializerMethodField()
     likes_count = serializers.SerializerMethodField()
     has_liked = serializers.SerializerMethodField()
@@ -87,4 +87,5 @@ class TweetSerializerForDetail(TweetSerializer):
                   'comments',
                   'likes_count',
                   'comments_count',
-                  'has_liked',)
+                  'has_liked',
+                  'photo_urls',)

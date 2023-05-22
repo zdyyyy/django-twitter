@@ -7,11 +7,13 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from utils.decorators import required_params
-class NotificationViewSet(viewsets.GenericViewSet,
-                       viewsets.mixins.ListModelMixin,):
+class NotificationViewSet(
+    viewsets.GenericViewSet,
+    viewsets.mixins.ListModelMixin,
+):
     serializer_class = NotificationSerializer
     permission_classes = (IsAuthenticated,)
-    fields = ('unread',)
+    filterset_fields = ('unread',)
 
     def get_queryset(self):
         # return Notification.objects.filter(recipient = self.request.user)
@@ -24,14 +26,14 @@ class NotificationViewSet(viewsets.GenericViewSet,
             'unread_count':count
         },status = status.HTTP_200_OK)
 
-    @action(methods=['POST'], detail=False, url_path='update-count')
+    @action(methods=['POST'], detail=False, url_path='mark-all-as-read')
     def mark_as_all_read(self, request, *args, **kwargs):
         count = self.get_queryset().update(unread=False)
         return Response({
             'marked_count': count
         }, status=status.HTTP_200_OK)
 
-    @required_params(method = 'POST',params = 'unread')
+    @required_params(method = 'POST',params = ['unread'])
     def update(self,request,*args,**kwargs):
         serializer = NotificationSerializerForUpdate(
             instance = self.get_object(),
@@ -48,5 +50,5 @@ class NotificationViewSet(viewsets.GenericViewSet,
 
 
         return Response(
-            NotificationSerializer(notification.data),
+            NotificationSerializer(notification).data,
             status = status.HTTP_200_OK,)
