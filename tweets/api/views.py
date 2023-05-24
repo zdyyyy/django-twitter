@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from newsfeeds.services import NewsFeedService
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -6,9 +5,12 @@ from rest_framework.response import Response
 from tweets.api.serializers import (
     TweetSerializer,
     TweetSerializerForCreate,
-    TweetSerializerForDetail)
+    TweetSerializerForDetail,
+)
 from tweets.models import Tweet
+from tweets.services import TweetService
 from utils.decorators import required_params
+from utils.paginations import EndlessPagination
 # Create your views here.
 class TweetViewSet(viewsets.GenericViewSet,
                    viewsets.mixins.CreateModelMixin,
@@ -39,9 +41,7 @@ class TweetViewSet(viewsets.GenericViewSet,
 
     @required_params(params=['user_id'])
     def list(self, request, *args,**kwargs):
-        tweets = Tweet.objects.filter(
-            user_id = request.query_params['user_id']
-        ).order_by('-created_at')
+        tweets = TweetService.get_cached_tweets(user_id=request.query_params['user_id'])
         serializer = TweetSerializer(tweets,
                                      context = {'request':request},
                                      many = True)  #list of dict #for showing

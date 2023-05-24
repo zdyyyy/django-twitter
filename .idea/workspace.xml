@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14003185-fce0-4b8d-bf96-341c53a17c2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/json_encoder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/redis_client.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/utils/redis_helper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/redis_serializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitter/cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/cache.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/paginations.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/paginations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/redis_serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/redis_serializers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +228,7 @@
       <workItem from="1684667683668" duration="17000" />
       <workItem from="1684667708062" duration="28630000" />
       <workItem from="1684836484498" duration="12000" />
-      <workItem from="1684885003958" duration="2153000" />
+      <workItem from="1684885003958" duration="5792000" />
     </task>
     <servers />
   </component>
