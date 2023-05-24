@@ -15,6 +15,8 @@ class Tweet(models.Model):
     created_at = models.DateTimeField(auto_now_add=True) #update value when created
     # updated_at = models.DateTimeField(auto_now=True) #update when revising every time
 
+    likes_count = models.IntegerField(default=0,null=True)
+    comments_count = models.IntegerField(default=0,null=True)
     class Meta:
         index_together = (('user','created_at'),)
         ordering = ('user','-created_at')
