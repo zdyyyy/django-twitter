@@ -10,7 +10,7 @@ class RedisHelper:
 
         serialized_list = []
 
-        for obj in objects:
+        for obj in objects[:settings.REDIS_KEY_EXPIRE_TIME]:
             serialized_data = DjangoModelSerializer.serializer(obj)
             serialized_list.append(serialized_data)
 
@@ -42,5 +42,6 @@ class RedisHelper:
             return
         serialized_data = DjangoModelSerializer.serializer(obj)
         conn.lpush(key,serialized_data)
+        conn.ltrim(key,0,settings.REDIS_LIST_LENGTH_LIMIT - 1)
 
 
