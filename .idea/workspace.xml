@@ -5,38 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14003185-fce0-4b8d-bf96-341c53a17c2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/accounts/listeners.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/services.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/friendships/listeners.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newsfeeds/api/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/listeners.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/memcached_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/json_encoder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/redis_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/redis_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/redis_serializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/action_provision" beforeDir="false" afterPath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/action_provision" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/action_set_name" beforeDir="false" afterPath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/action_set_name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/id" beforeDir="false" afterPath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/index_uuid" beforeDir="false" afterPath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/index_uuid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/private_key" beforeDir="false" afterPath="$PROJECT_DIR$/.vagrant/machines/default/virtualbox/private_key" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/api/paginations.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/paginations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friendships/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inbox/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/inbox/api/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inbox/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inbox/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/likes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/likes/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsfeeds/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsfeeds/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsfeeds/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsfeeds/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing/testcases.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing/testcases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter/cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/cache.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/paginations.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/paginations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +224,9 @@
       <workItem from="1684466626077" duration="1216000" />
       <workItem from="1684535193854" duration="2473000" />
       <workItem from="1684667683668" duration="17000" />
-      <workItem from="1684667708062" duration="27311000" />
+      <workItem from="1684667708062" duration="28630000" />
+      <workItem from="1684836484498" duration="12000" />
+      <workItem from="1684885003958" duration="2153000" />
     </task>
     <servers />
   </component>
@@ -310,7 +286,7 @@
     <SUITE FILE_PATH="coverage/django_twitter$Test__friendships_api_tests_FriendshipAPITests_test_followings.coverage" NAME="Test: friendships.api.tests.FriendshipAPITests.test_followings Coverage Results" MODIFIED="1684712113025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__newsfeeds_api_tests_NewsFeedApiTests_test_list.coverage" NAME="Test: newsfeeds.api.tests.NewsFeedApiTests.test_list Coverage Results" MODIFIED="1684712384748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__inbox_api_tests_NotificationApiTests_test_mark_all_as_read.coverage" NAME="Test: inbox.api.tests.NotificationApiTests.test_mark_all_as_read Coverage Results" MODIFIED="1684673780896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/django_twitter$Test__newsfeeds_api_tests_NewsFeedApiTests_test_pagination.coverage" NAME="Test: newsfeeds.api.tests.NewsFeedApiTests.test_pagination Coverage Results" MODIFIED="1684717621301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_twitter$Test__newsfeeds_api_tests_NewsFeedApiTests_test_pagination.coverage" NAME="Test: newsfeeds.api.tests.NewsFeedApiTests.test_pagination Coverage Results" MODIFIED="1684718071300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__comments_api_tests_CommentApiTests_test_update.coverage" NAME="Test: comments.api.tests.CommentApiTests.test_update Coverage Results" MODIFIED="1684449006078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__friendships_api_tests_FriendshipAPITests_test_follow.coverage" NAME="Test: friendships.api.tests.FriendshipAPITests.test_follow Coverage Results" MODIFIED="1684679599509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/django_twitter$Test__tweets_tests_TweetTests_test_hours_to_now.coverage" NAME="Test: tweets.tests.TweetTests.test_hours_to_now Coverage Results" MODIFIED="1684451550953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
