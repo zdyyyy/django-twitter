@@ -1,6 +1,5 @@
 from friendships.services import FriendshipService
 from newsfeeds.models import NewsFeed
-from newsfeeds.models import NewsFeed
 from twitter.cache import USER_NEWSFEEDS_PATTERN
 from utils.redis_helper import RedisHelper
 

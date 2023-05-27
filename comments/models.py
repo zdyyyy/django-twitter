@@ -32,3 +32,6 @@ class Comment(models.Model):
             content_type = ContentType.objects.get_for_model(Comment),
             object_id = self.id,
         ).order_by('-created_at')
+
+pre_delete.connect(decr_comments_count, sender=Like)
+post_save.connect(incr_comments_count, sender=Like)

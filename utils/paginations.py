@@ -13,7 +13,6 @@ class EndlessPagination(BasePagination):
     def to_html(self):
         pass
 
-
     def paginate_ordered_list(self,reverse_ordered_list,request):
         if 'created_at__gt' in request.query_params:
             created_at__gt = parser.isoparser(request.query_params['created_at__gt'])

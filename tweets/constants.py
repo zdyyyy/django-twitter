@@ -1,3 +1,5 @@
+# integer cost the minimum
+# integer does not bind with string, which is more flexible
 class TweetPhotoStatus:
     PENDING = 0
     APPROVED = 1

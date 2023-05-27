@@ -32,3 +32,6 @@ class Like(models.Model):
     @property
     def cached_user(self):
         return MemcachedHelper.get_object_through_cache(User, self.user_id)
+
+pre_delete.connect(decr_likes_count, sender=Like)
+post_save.connect(incr_likes_count, sender=Like)
