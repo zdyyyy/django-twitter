@@ -5,16 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14003185-fce0-4b8d-bf96-341c53a17c2c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/newsfeeds/constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newsfeeds/tasks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweets/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweets/models/tweet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweets/models/tweet_photo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twitter/celery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/ratelimit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/time_constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comments/listeners.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/listeners.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inbox/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/friendships/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/friendships/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inbox/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inbox/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/likes/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/likes/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/likes/listeners.py" beforeDir="false" afterPath="$PROJECT_DIR$/likes/listeners.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/likes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/likes/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsfeeds/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/newsfeeds/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsfeeds/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweets/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets/models.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tweets/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweets/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/paginations.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/paginations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitter/cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/cache.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/redis_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/redis_helper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -232,7 +242,10 @@
       <workItem from="1684667708062" duration="28630000" />
       <workItem from="1684836484498" duration="12000" />
       <workItem from="1684885003958" duration="16983000" />
-      <workItem from="1685108008267" duration="8833000" />
+      <workItem from="1685108008267" duration="10115000" />
+      <workItem from="1685362706100" duration="2948000" />
+      <workItem from="1685742210678" duration="1213000" />
+      <workItem from="1685998904386" duration="10506000" />
     </task>
     <servers />
   </component>

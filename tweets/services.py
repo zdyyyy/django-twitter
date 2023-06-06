@@ -1,5 +1,5 @@
-from tweets.models import Tweet
-from tweets.models import TweetPhoto
+from tweets.models.tweet import Tweet
+from tweets.models.tweet_photo import TweetPhoto
 from twitter.cache import USER_TWEETS_PATTERN
 from utils.redis_helper import RedisHelper
 
